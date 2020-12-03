@@ -1,18 +1,21 @@
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
-import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
+import { postFilePaths, POSTS_PATH } from '../utils/mdxUtils';
 
 export default function Home({
-  allPostsData
+  posts
 }: {
-  allPostsData: {
-    date: string
-    title: string
-    id: string
+  posts: {
+    content: string
+    data: any
+    filePath: string
   }[]
 }) {
   return (
@@ -30,14 +33,16 @@ export default function Home({
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
+          {posts.map(post => (
+            <li className={utilStyles.listItem} key={post.filePath}>
+              <Link
+                            as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
+              href={`/posts/[slug]`}>
+                <a>{post.data.title}</a>
               </Link>
               <br />
               <small className={utilStyles.lightText}>
-                <Date dateString={date} />
+                <Date dateString={post.data.date} />
               </small>
             </li>
           ))}
@@ -48,10 +53,20 @@ export default function Home({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData()
+  const posts = postFilePaths.map(filePath => {
+    const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
+    const { content, data } = matter(source);
+
+    return {
+      content,
+      data,
+      filePath,
+    }
+  });
+
   return {
     props: {
-      allPostsData
+      posts
     }
   }
 }
