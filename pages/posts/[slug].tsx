@@ -3,6 +3,7 @@ import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
 import hydrate from 'next-mdx-remote/hydrate'
+import rehypePrism from '@mapbox/rehype-prism';
 import renderToString from 'next-mdx-remote/render-to-string'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
@@ -63,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     // Optionally pass remark/rehype plugins
     mdxOptions: {
       remarkPlugins: [],
-      rehypePlugins: [],
+      rehypePlugins: [rehypePrism],
     },
     scope: data,
   })
