@@ -1,18 +1,16 @@
-import Layout from '../../components/layout'
-import { getAllPostIds, getPostData } from '../../lib/posts'
-import Head from 'next/head'
-import Date from '../../components/date'
-import utilStyles from '../../styles/utils.module.css'
-import { GetStaticProps, GetStaticPaths } from 'next'
 
 import fs from 'fs'
+import path from 'path'
 import matter from 'gray-matter'
 import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
-import dynamic from 'next/dynamic'
-import Link from 'next/link'
-import path from 'path'
+import { GetStaticProps, GetStaticPaths } from 'next'
+import Head from 'next/head'
+import Layout from '../../components/layout'
+import Date from '../../components/date'
+import utilStyles from '../../styles/utils.module.css'
 import { postFilePaths, POSTS_PATH } from '../../utils/mdxUtils'
+
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
