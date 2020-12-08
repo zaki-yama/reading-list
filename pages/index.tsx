@@ -1,21 +1,18 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter'
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
+import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
 import { GetStaticProps } from 'next'
-import { postFilePaths, POSTS_PATH } from '../utils/mdxUtils';
 
 export default function Home({
-  posts
+  allPostsData
 }: {
-  posts: {
-    content: string
-    data: any
-    filePath: string
+  allPostsData: {
+    date: string
+    title: string
+    id: string
   }[]
 }) {
   return (
@@ -28,16 +25,14 @@ export default function Home({
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <ul className={utilStyles.list}>
-          {posts.map(post => (
-            <li className={utilStyles.listItem} key={post.filePath}>
-              <Link
-                            as={`/posts/${post.filePath.replace(/\.mdx?$/, '')}`}
-              href={`/posts/[slug]`}>
-                <a>{post.data.title}</a>
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
               </Link>
               <br />
               <small className={utilStyles.lightText}>
-                <Date dateString={post.data.date} />
+                <Date dateString={date} />
               </small>
             </li>
           ))}
@@ -48,20 +43,10 @@ export default function Home({
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = postFilePaths.map(filePath => {
-    const source = fs.readFileSync(path.join(POSTS_PATH, filePath))
-    const { content, data } = matter(source);
-
-    return {
-      content,
-      data,
-      filePath,
-    }
-  });
-
+  const allPostsData = getSortedPostsData()
   return {
     props: {
-      posts
+      allPostsData
     }
   }
 }
