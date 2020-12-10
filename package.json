@@ -12,6 +12,7 @@
     "date-fns": "^2.11.1",
     "gray-matter": "^4.0.2",
     "next": "^10.0.0",
+    "next-remote-watch": "^0.3.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "remark": "^12.0.0",
