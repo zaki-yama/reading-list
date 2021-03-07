@@ -11,6 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-pino-logger": "^6.0.0",
+    "pino": "^6.11.1"
+  },
+  "devDependencies": {
+    "pino-pretty": "^4.7.0"
   }
 }
