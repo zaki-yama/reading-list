@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import remark from "remark";
+import slug from "remark-slug";
+import toc from "remark-toc";
 import html from "remark-html";
 import prism from "remark-prism";
 
@@ -56,6 +58,8 @@ export async function getPostData(id: string) {
 
   // Use remark to convert markdown into HTML string
   const processedContent = await remark()
+    .use(slug)
+    .use(toc, { tight: true })
     .use(html)
     .use(prism)
     .process(matterResult.content);
