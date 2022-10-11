@@ -13,13 +13,14 @@ export default function Layout({
   children: React.ReactNode;
   home?: boolean;
 }) {
+  const searchParams = new URLSearchParams(`title=${siteTitle}`);
   return (
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
           property="og:image"
-          content={`https://reading-list.zaki-yama.dev/api/og?title=${siteTitle}`}
+          content={`https://reading-list.zaki-yama.dev/api/og?${searchParams.toString()}`}
           key="og-image"
         />
         <meta property="og:title" content={siteTitle} key="og-title" />
