@@ -14,12 +14,17 @@ export default function Post({
     contentHtml: string;
   };
 }) {
+  const title = `${siteTitle} ${postData.title}`;
   return (
     <Layout>
       <Head>
-        <title>
-          {siteTitle} {postData.title}
-        </title>
+        <title>{title}</title>
+        <meta
+          property="og:image"
+          content={`https://reading-list.zaki-yama.dev/api/og?title=${`${siteTitle} ${postData.title}`}`}
+          key="og-image"
+        />
+        <meta name="og:title" content={postData.title} key="og-title" />
       </Head>
       <article className="markdown-body">
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>
