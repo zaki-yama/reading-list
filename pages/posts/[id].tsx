@@ -21,7 +21,9 @@ export default function Post({
         <title>{title}</title>
         <meta
           property="og:image"
-          content={`https://reading-list.zaki-yama.dev/api/og?title=${`${siteTitle} ${postData.title}`}`}
+          content={`https://reading-list.zaki-yama.dev/api/og?title=${encodeURI(
+            `${siteTitle} ${postData.title}`
+          )}`}
           key="og-image"
         />
         <meta name="og:title" content={postData.title} key="og-title" />
