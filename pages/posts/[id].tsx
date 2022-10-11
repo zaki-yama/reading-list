@@ -15,15 +15,14 @@ export default function Post({
   };
 }) {
   const title = `${siteTitle} ${postData.title}`;
+  const searchParams = new URLSearchParams(`title=${title}`);
   return (
     <Layout>
       <Head>
         <title>{title}</title>
         <meta
           property="og:image"
-          content={`https://reading-list.zaki-yama.dev/api/og?title=${encodeURI(
-            `${siteTitle} ${postData.title}`
-          )}`}
+          content={`https://reading-list.zaki-yama.dev/api/og?${searchParams.toString()}`}
           key="og-image"
         />
         <meta name="og:title" content={postData.title} key="og-title" />
