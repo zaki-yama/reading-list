@@ -25,7 +25,7 @@ export default function Post({
           content={`https://reading-list.zaki-yama.dev/api/og?${searchParams.toString()}`}
           key="og-image"
         />
-        <meta name="og:title" content={postData.title} key="og-title" />
+        <meta property="og:title" content={postData.title} key="og-title" />
       </Head>
       <article className="markdown-body">
         <h1 className={utilStyles.headingXl}>{postData.title}</h1>

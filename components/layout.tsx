@@ -22,7 +22,8 @@ export default function Layout({
           content={`https://reading-list.zaki-yama.dev/api/og?title=${siteTitle}`}
           key="og-image"
         />
-        <meta name="og:title" content={siteTitle} key="og-title" />
+        <meta property="og:title" content={siteTitle} key="og-title" />
+        <meta property="og:description" content="zaki-yama's reading-list" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
