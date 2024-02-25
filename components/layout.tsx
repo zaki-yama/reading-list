@@ -2,6 +2,7 @@ import Head from "next/head";
 import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
+import { Analytics } from "@vercel/analytics/react";
 
 const name = "zaki-yama";
 export const siteTitle = "zaki-yama's reading list";
@@ -64,6 +65,7 @@ export default function Layout({
           </Link>
         </div>
       )}
+      <Analytics />
     </div>
   );
 }
