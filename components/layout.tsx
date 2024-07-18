@@ -3,6 +3,7 @@ import styles from "./layout.module.css";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import { Analytics } from "@vercel/analytics/react";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const name = "zaki-yama";
 export const siteTitle = "zaki-yama's reading list";
@@ -57,6 +58,7 @@ export default function Layout({
           </>
         )}
       </header>
+      <GoogleTagManager gtmId="GTM-WQ7KV9GK" />
       <main>{children}</main>
       {!home && (
         <div className={styles.backToHome}>
