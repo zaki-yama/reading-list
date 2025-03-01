@@ -6,8 +6,6 @@ import Link from "next/link";
 import Date from "../components/date";
 import { GetStaticProps } from "next";
 
-import "github-markdown-css/github-markdown-light.css";
-
 export default function Home({
   allPostsData,
 }: {
