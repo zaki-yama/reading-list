@@ -1,1 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+# zaki-yama's reading list
+
+https://reading-list.zaki-yama.dev/
