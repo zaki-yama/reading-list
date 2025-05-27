@@ -29,7 +29,7 @@ export default function Home({
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a>{title}</a>
+                {title}
               </Link>
               <br />
               <small className={utilStyles.lightText}>
