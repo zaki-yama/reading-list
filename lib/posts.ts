@@ -1,11 +1,13 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import remark from "remark";
-import slug from "remark-slug";
-import toc from "remark-toc";
-import html from "remark-html";
-import prism from "remark-prism";
+import { unified } from "unified";
+import remarkToc from "remark-toc";
+import rehypeSlug from "rehype-slug";
+import rehypeStringify from "rehype-stringify";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeShiki from "@shikijs/rehype";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -57,11 +59,15 @@ export async function getPostData(id: string) {
   const matterResult = matter(fileContents);
 
   // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(slug)
-    .use(toc, { tight: true })
-    .use(html)
-    .use(prism)
+  const processedContent = await unified()
+    .use(remarkToc, { tight: true })
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeSlug)
+    .use(rehypeShiki, {
+      theme: "github-dark",
+    })
+    .use(rehypeStringify)
     .process(matterResult.content);
   const contentHtml = processedContent.toString();
 
