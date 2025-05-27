@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { unified } from "unified";
 import remarkToc from "remark-toc";
-import rehypeSlug from 'rehype-slug'
+import rehypeSlug from "rehype-slug";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
@@ -65,7 +65,7 @@ export async function getPostData(id: string) {
     .use(remarkRehype)
     .use(rehypeSlug)
     .use(rehypeShiki, {
-      theme: 'github-dark',
+      theme: "github-dark",
     })
     .use(rehypeStringify)
     .process(matterResult.content);
