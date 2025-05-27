@@ -28,7 +28,6 @@ export default function Home({
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 {title}
               </Link>
               <br />
