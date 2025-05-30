@@ -20,6 +20,12 @@ export default function Layout({
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title={siteTitle}
+          href="/api/feed.xml"
+        />
         <meta
           property="og:image"
           content={`https://reading-list.zaki-yama.dev/api/og?${searchParams.toString()}`}

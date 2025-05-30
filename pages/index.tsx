@@ -21,7 +21,21 @@ export default function Home({
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Web フロントエンド系の読んだ記事をまとめていくためのサイト</p>
+        <p>
+          <a
+            href="https://github.com/zaki-yama"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            @zaki-yama
+          </a>
+          が日頃読んだ記事をまとめていくためのサイト
+        </p>
+        <p>
+          <a href="/api/feed.xml" target="_blank" rel="noopener noreferrer">
+            📡 RSS Feed
+          </a>
+        </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <ul className={utilStyles.list}>
