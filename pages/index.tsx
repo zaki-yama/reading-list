@@ -32,15 +32,6 @@ export default function Home({
           </a>
           が日頃読んだ記事をまとめていくためのサイト
         </p>
-        <p>
-          <a
-            href={SITE_CONFIG.rss.feedUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            📡 RSS Feed
-          </a>
-        </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <ul className={utilStyles.list}>

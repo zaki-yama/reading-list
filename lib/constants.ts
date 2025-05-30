@@ -9,6 +9,8 @@ export const SITE_CONFIG = {
   // サイト説明
   description: "@zaki-yamaが日頃読んだ記事をまとめていくためのサイト",
 
+  github: "https://github.com/zaki-yama/reading-list",
+
   // 作者情報
   author: {
     name: "zaki-yama",
