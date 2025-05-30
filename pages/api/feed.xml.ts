@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Feed } from "feed";
 import { getSortedPostsDataWithContent } from "../../lib/posts";
+import { SITE_CONFIG } from "../../lib/constants";
 
 export default async function handler(
   req: NextApiRequest,
@@ -12,36 +13,35 @@ export default async function handler(
 
   try {
     // サイトの基本情報
-    const siteUrl = "https://reading-list.zaki-yama.dev";
-    const feedUrl = `${siteUrl}/api/feed.xml`;
+    const feedUrl = `${SITE_CONFIG.url}${SITE_CONFIG.rss.feedUrl}`;
 
     // Feedインスタンスを作成
     const feed = new Feed({
-      title: "@zaki-yamaの読書記録",
-      description: "@zaki-yamaが日頃読んだ記事をまとめていくためのサイト",
-      id: siteUrl,
-      link: siteUrl,
+      title: SITE_CONFIG.title,
+      description: SITE_CONFIG.description,
+      id: SITE_CONFIG.url,
+      link: SITE_CONFIG.url,
       language: "ja",
-      image: `${siteUrl}/favicon.ico`,
-      favicon: `${siteUrl}/favicon.ico`,
-      copyright: `All rights reserved ${new Date().getFullYear()}, @zaki-yama`,
+      image: `${SITE_CONFIG.url}/favicon.ico`,
+      favicon: `${SITE_CONFIG.url}/favicon.ico`,
+      copyright: `All rights reserved ${new Date().getFullYear()}, ${SITE_CONFIG.author.name}`,
       generator: "Next.js RSS Feed",
       feedLinks: {
         rss2: feedUrl,
       },
       author: {
-        name: "@zaki-yama",
-        link: "https://github.com/zaki-yama",
+        name: SITE_CONFIG.author.name,
+        link: SITE_CONFIG.author.github,
       },
     });
 
     // 最新15件の記事を取得
     const allPosts = getSortedPostsDataWithContent();
-    const recentPosts = allPosts.slice(0, 15);
+    const recentPosts = allPosts.slice(0, SITE_CONFIG.rss.maxItems);
 
     // 各記事をフィードに追加
     recentPosts.forEach((post) => {
-      const postUrl = `${siteUrl}/posts/${post.id}`;
+      const postUrl = `${SITE_CONFIG.url}/posts/${post.id}`;
 
       feed.addItem({
         title: post.title,
@@ -51,8 +51,8 @@ export default async function handler(
         date: new Date(post.date),
         author: [
           {
-            name: "@zaki-yama",
-            link: "https://github.com/zaki-yama",
+            name: SITE_CONFIG.author.name,
+            link: SITE_CONFIG.author.github,
           },
         ],
       });

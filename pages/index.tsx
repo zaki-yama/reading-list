@@ -5,6 +5,7 @@ import { getSortedPostsData } from "../lib/posts";
 import Link from "next/link";
 import Date from "../components/date";
 import { GetStaticProps } from "next";
+import { SITE_CONFIG } from "../lib/constants";
 
 export default function Home({
   allPostsData,
@@ -23,16 +24,20 @@ export default function Home({
       <section className={utilStyles.headingMd}>
         <p>
           <a
-            href="https://github.com/zaki-yama"
+            href={SITE_CONFIG.author.github}
             target="_blank"
             rel="noopener noreferrer"
           >
-            @zaki-yama
+            {SITE_CONFIG.author.name}
           </a>
           が日頃読んだ記事をまとめていくためのサイト
         </p>
         <p>
-          <a href="/api/feed.xml" target="_blank" rel="noopener noreferrer">
+          <a
+            href={SITE_CONFIG.rss.feedUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             📡 RSS Feed
           </a>
         </p>

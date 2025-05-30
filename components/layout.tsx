@@ -4,9 +4,10 @@ import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { SITE_CONFIG } from "../lib/constants";
 
 const name = "zaki-yama";
-export const siteTitle = "zaki-yama's reading list";
+export const siteTitle = SITE_CONFIG.title;
 
 export default function Layout({
   children,
@@ -23,16 +24,16 @@ export default function Layout({
         <link
           rel="alternate"
           type="application/rss+xml"
-          title={siteTitle}
-          href="/api/feed.xml"
+          title={`${SITE_CONFIG.title} RSS Feed`}
+          href={SITE_CONFIG.rss.feedUrl}
         />
         <meta
           property="og:image"
-          content={`https://reading-list.zaki-yama.dev/api/og?${searchParams.toString()}`}
+          content={`${SITE_CONFIG.url}${SITE_CONFIG.ogImage}?${searchParams.toString()}`}
           key="og-image"
         />
         <meta property="og:title" content={siteTitle} key="og-title" />
-        <meta property="og:description" content="zaki-yama's reading-list" />
+        <meta property="og:description" content={SITE_CONFIG.description} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
@@ -41,7 +42,7 @@ export default function Layout({
             <img
               src="/images/profile.png"
               className={`${styles.headerHomeImage} ${utilStyles.borderCircle}`}
-              alt={name}
+              alt={SITE_CONFIG.author.name}
             />
             <h1 className={utilStyles.heading2Xl}>{siteTitle}</h1>
           </>
