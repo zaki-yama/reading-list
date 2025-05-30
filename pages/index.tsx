@@ -5,6 +5,7 @@ import { getSortedPostsData } from "../lib/posts";
 import Link from "next/link";
 import Date from "../components/date";
 import { GetStaticProps } from "next";
+import { SITE_CONFIG } from "../lib/constants";
 
 export default function Home({
   allPostsData,
@@ -21,7 +22,16 @@ export default function Home({
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Web フロントエンド系の読んだ記事をまとめていくためのサイト</p>
+        <p>
+          <a
+            href={SITE_CONFIG.author.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {SITE_CONFIG.author.name}
+          </a>
+          が日頃読んだ記事をまとめていくためのサイト
+        </p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <ul className={utilStyles.list}>

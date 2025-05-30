@@ -4,6 +4,7 @@ import Head from "next/head";
 import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
 import { GetStaticProps, GetStaticPaths } from "next";
+import { SITE_CONFIG } from "../../lib/constants";
 
 export default function Post({
   postData,
@@ -22,7 +23,7 @@ export default function Post({
         <title>{title}</title>
         <meta
           property="og:image"
-          content={`https://reading-list.zaki-yama.dev/api/og?${searchParams.toString()}`}
+          content={`${SITE_CONFIG.url}${SITE_CONFIG.ogImage}?${searchParams.toString()}`}
           key="og-image"
         />
         <meta property="og:title" content={postData.title} key="og-title" />
