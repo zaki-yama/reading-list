@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>記事ページ - パターン1: クリーンレイアウト</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <nav class="flex items-center justify-between">
+                <h1 class="text-xl font-semibold text-gray-900">Reading List</h1>
+                <a href="/" class="text-sm text-gray-600 hover:text-gray-900 transition-colors">← ホームに戻る</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-3xl mx-auto px-6 py-12">
+        <article class="bg-white rounded-lg shadow-sm p-8">
+            <!-- Article Header -->
+            <header class="mb-8 pb-6 border-b border-gray-100">
+                <h1 class="text-3xl font-bold text-gray-900 leading-tight mb-4">
+                    2025年7月のReading List
+                </h1>
+                <div class="flex items-center text-sm text-gray-500">
+                    <time datetime="2025-07-23">2025年7月23日</time>
+                    <span class="mx-2">·</span>
+                    <span>読了時間: 約5分</span>
+                </div>
+            </header>
+
+            <!-- Article Body -->
+            <div class="prose prose-lg max-w-none">
+                <h2>今月読んだ記事</h2>
+                
+                <h3>技術記事</h3>
+                <ul>
+                    <li>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 no-underline hover:underline">
+                            <strong>Next.js 14の新機能について</strong>
+                        </a>
+                        <p class="text-gray-600 text-sm mt-1 mb-2">App Routerの改善点やServer Actionsの安定化について詳しく解説された記事。実装例も豊富で参考になった。</p>
+                    </li>
+                    <li>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 no-underline hover:underline">
+                            <strong>TypeScriptの型安全性を高めるテクニック</strong>
+                        </a>
+                        <p class="text-gray-600 text-sm mt-1 mb-2">conditional typesやmapped typesの実践的な使い方が分かりやすく説明されている。</p>
+                    </li>
+                </ul>
+
+                <h3>デザイン・UI/UX</h3>
+                <ul>
+                    <li>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 no-underline hover:underline">
+                            <strong>2025年のWebデザイントレンド</strong>
+                        </a>
+                        <p class="text-gray-600 text-sm mt-1 mb-2">ミニマリズムの進化やアクセシビリティを重視したデザインについて。</p>
+                    </li>
+                </ul>
+
+                <h3>その他</h3>
+                <ul>
+                    <li>
+                        <a href="#" class="text-blue-600 hover:text-blue-800 no-underline hover:underline">
+                            <strong>リモートワークの生産性向上について</strong>
+                        </a>
+                        <p class="text-gray-600 text-sm mt-1 mb-2">在宅勤務での集中力維持や時間管理のコツが紹介されている実用的な記事。</p>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Article Footer -->
+            <footer class="mt-12 pt-6 border-t border-gray-100">
+                <div class="flex items-center justify-between">
+                    <div class="text-sm text-gray-500">
+                        この記事は <time datetime="2025-07-23">2025年7月23日</time> に更新されました
+                    </div>
+                    <div class="flex space-x-4">
+                        <button class="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                            共有する
+                        </button>
+                        <button class="text-sm text-gray-600 hover:text-gray-900 transition-colors">
+                            ブックマーク
+                        </button>
+                    </div>
+                </div>
+            </footer>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-4xl mx-auto px-6 py-8 mt-16 border-t border-gray-200">
+        <div class="text-center text-sm text-gray-500">
+            © 2025 Reading List. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
